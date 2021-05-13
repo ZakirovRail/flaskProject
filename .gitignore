@@ -1,4 +1,6 @@
 /venv/
 .idea/*
-*/__pycache__/*
-.DS_Store/*
+/__pycache__/*
+.DS_Store
+blog/articles/__pycache__/*
+blog/user/__pycache__/*
