@@ -4,7 +4,7 @@ import flask
 
 from blog.articles.views import articles_app
 from blog.contacts.views import contact
-from blog.user.views import user
+from blog.user.views import user_app
 
 
 def create_app() -> flask.Flask:
@@ -14,6 +14,6 @@ def create_app() -> flask.Flask:
 
 
 def register_blueprints(app: flask.Flask):
-    app.register_blueprint(user)
+    app.register_blueprint(user_app)
     app.register_blueprint(articles_app)
     app.register_blueprint(contact)

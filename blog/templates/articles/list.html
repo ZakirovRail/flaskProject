@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Report list
+    Articles list
 {% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col">
-            <h1>Articles</h1>
-            {% for article in articles %}
+            <h1>Articles page</h1>
+            {% for article_id in articles_dict %}
             <ul>
-                <li>{{ report }}</li>
+                <li><a href="{{ url_for('articles_app.articles_list', pk=article_id['id']) }}">{{ article_id['title'] }}</a></li>
             </ul>
             {% endfor %}
         </div>

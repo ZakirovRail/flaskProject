@@ -30,19 +30,31 @@ ARTICLES = [
             'name': 'some name',
             'id': 3,
         },
+    },
+    {
+        'id': 4,
+        'title': 'second Mike article',
+        'text': 'This is the second article of Mike',
+        'author': {
+            'name': 'some name',
+            'id': 3,
+        },
     }
 ]
 
 
 @articles_app.route('/')
-# @articles_app.route('/<int:id_art>')
-# def articles_list(id_art: int):
 def articles_list():
+    return render_template('articles/list.html', articles_dict=ARTICLES)
+
+
+@articles_app.route('/<int:pk>')
+def get_article(pk: int):
     try:
-        id_art = [id['id'] for id in ARTICLES]
+        articles = [id['id'] for id in ARTICLES]
     except KeyError:
         return NotFound()
-    return render_template('articles/list.html', articles=id_art)
+    return render_template('articles/details.html', articles=articles)
 
 
 # @user.route('/<int:pk>')
