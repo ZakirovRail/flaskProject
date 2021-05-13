@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from werkzeug.exceptions import NotFound
 
 articles_app = Blueprint('articles_app', __name__, url_prefix='/articles', static_folder='../static')
 
@@ -33,7 +34,24 @@ ARTICLES = [
 ]
 
 
-@articles_app.route('/', endpoint='list')
+@articles_app.route('/')
+# @articles_app.route('/<int:id_art>')
+# def articles_list(id_art: int):
 def articles_list():
-    # return render_template('articles/list.html', articles=[1, 2, 3, 4, 5])
-    return render_template('articles/list.html', articles=ARTICLES)
+    try:
+        id_art = [id['id'] for id in ARTICLES]
+    except KeyError:
+        return NotFound()
+    return render_template('articles/list.html', articles=id_art)
+
+
+# @user.route('/<int:pk>')
+# def get_user(pk: int):
+#     try:
+#         user_name = USERS[pk]
+#     except KeyError:
+#         return NotFound()
+#     return render_template(
+#         'users/details.html',
+#         user_name=user_name
+#     )
