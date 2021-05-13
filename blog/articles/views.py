@@ -55,15 +55,3 @@ def get_article(pk: int):
     except KeyError:
         return NotFound()
     return render_template('articles/details.html', articles=articles)
-
-
-# @user.route('/<int:pk>')
-# def get_user(pk: int):
-#     try:
-#         user_name = USERS[pk]
-#     except KeyError:
-#         return NotFound()
-#     return render_template(
-#         'users/details.html',
-#         user_name=user_name
-#     )
